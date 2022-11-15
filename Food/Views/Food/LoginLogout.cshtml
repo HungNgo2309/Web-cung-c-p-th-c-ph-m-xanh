@@ -1,0 +1,38 @@
+﻿@using Food.Models
+@{
+    /**/
+
+    Account ac = (Account)Session["TaiKhoan"];
+}
+<style>
+    a:hover {
+        color: forestgreen;
+    }
+</style>
+
+@if (Session["TaiKhoan"] == null)
+
+{
+    <li>
+        <i class="zmdi zmdi-account-add"></i> @Html.ActionLink("Đăng ký", "Register", "User")
+    </li>
+    <li>
+        <span class="glyphicon glyphicon-log-in"></span> @Html.ActionLink("Đăng nhập", "Login", "User")
+    </li>
+    @Html.Action("GioHangPartial", "ShoppingCart")
+}
+else
+{
+    <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-user"></span> Xin chào:@ac.DisplayName
+        </button>
+        <div class="dropdown-menu">
+                <a class="dropdown-item">@Html.ActionLink("Đăng xuất", "Logout", "User")</a>
+                <a class="dropdown-item">@Html.ActionLink("Thay đổi thông tin", "Info", "User")</a>
+        </div>
+    </div>
+
+    @Html.Action("GioHangPartial", "ShoppingCart")
+}
+
