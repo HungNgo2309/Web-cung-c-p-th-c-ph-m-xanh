@@ -191,6 +191,7 @@
     <Compile Include="Models\Rate_.cs">
       <DependentUpon>FoodStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RecaptchaResult.cs" />
     <Compile Include="Models\ShoppingCard.cs">
       <DependentUpon>FoodStore.tt</DependentUpon>
     </Compile>
@@ -1543,8 +1544,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Content\template\neworder.html" />
-    <Content Include="Web.config" />
+    <Content Include="Content\template\changpass.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1581,6 +1584,9 @@
     <Content Include="Views\ShoppingCart\ThanhToan.cshtml" />
     <Content Include="Views\Food\Star.cshtml" />
     <Content Include="Views\Food\Trend.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\User\Reset.cshtml" />
+    <Content Include="Views\User\resetpass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

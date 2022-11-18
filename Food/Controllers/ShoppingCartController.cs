@@ -301,7 +301,8 @@ namespace Food.Controllers
                     new MailHelper().SendMail(f["email"], "Đơn hàng mới từ Hưng Vũ Vegetable", content);
                     new MailHelper().SendMail(toEmail, "Đơn hàng mới từ Hưng Vũ Vegetable", content);
                     Session["pay"] = null;
-                    return RedirectToAction("GioHang", "ShoppingCart");
+                    ViewBag.ThongBao = "Đặt hàng thành công.Vào mục đơn hàng để xem chi tiết ";
+                    return this.GioHang();
                 }
                 else
                 {

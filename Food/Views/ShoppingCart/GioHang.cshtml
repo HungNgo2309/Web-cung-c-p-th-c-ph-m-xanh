@@ -12,8 +12,9 @@
         bottom: 20px;
         padding-left: 450px;
     }
-    th{
-        text-align:center;
+
+    th {
+        text-align: center;
     }
 </style>
 <!-- Breadcrumb Section Begin -->
@@ -44,7 +45,12 @@
 </section>
 <!-- Breadcrumb Section End -->
 <!-- Shoping Cart Section Begin -->
-<h4>@ViewBag.ThongBao</h4>
+< @if (ViewBag.ThongBao != null)
+{
+    <script>
+        alert("@Html.Raw(@ViewBag.ThongBao)")
+    </script>
+}
 <section class="shoping-cart spad">
     <div class="container">
         <div class="row">
@@ -53,6 +59,7 @@
                     <table>
                         <thead>
                             <tr>
+                                
                                 <th class="shoping__product" style="width:41%;">Products</th>
                                 <th>Giá</th>
                                 <th>Số lượng</th>
@@ -68,6 +75,7 @@
                                 FoodStoreEntities db = new FoodStoreEntities();
                                 Product pd = db.Products.SingleOrDefault(n => n.ProductID == item.ProductID);
                                 <tr>
+                                    
                                     <td class="shoping__cart__item">
                                         <img src="~/Content/Images/@pd.Image" alt="">
                                         <h5>@pd.Name</h5>
@@ -141,3 +149,17 @@
     </div>
 </section>
 <!-- Shoping Cart Section End -->
+<script type="text/javascript">
+   
+    
+
+    function AddCheckedProducts() {
+        var value = 0.0;
+        for (var i = 0; i < CSC_checkbox_IDs2.length; i++) {
+            var d = document.getElementById(CSC_checkbox_IDs2[i]);
+            if (d.checked) { value += parseFloat(d.value); }
+        }
+        document.getElementById(CSC_total_spot2).innerHTML = value.toFixed(2);
+    }
+    AddCheckedProducts();
+</script>

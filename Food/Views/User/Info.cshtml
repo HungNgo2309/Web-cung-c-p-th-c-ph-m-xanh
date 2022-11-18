@@ -4,11 +4,11 @@
     ViewBag.Title = "Info";
     Layout = "~/Views/Shared/_FoodLayoutPage1.cshtml";
 }
-@{ 
-    if(ViewBag.ThongBao!=null)
-    {
-        <h2>hfsdgfsh</h2>
-    }
+@if (ViewBag.ThongBao != null)
+{
+    <script>
+        alert("@Html.Raw(@ViewBag.ThongBao)")
+    </script>
 }
 <h2 style="text-align:center; color:red;">Thay đổi thông tin cá nhân</h2>
 
@@ -48,6 +48,7 @@
         </div>
     </div>
 
-    <input style="margin-left:353px" type="submit" value="Thay đổi thông tin" class="btn btn-success" />
+    <input style="margin-left:300px" type="submit" value="Thay đổi thông tin" class="btn btn-success" />
+    <a href="@Url.Action("changepass","User")"><input  class="btn btn-danger" value="Đổi mật khẩu" /></a>
 </div>
 }

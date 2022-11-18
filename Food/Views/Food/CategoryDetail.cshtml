@@ -10,21 +10,30 @@
         color: #fff;
         position: absolute;
         bottom: 20px;
-        padding-left: 330px;
+        padding-left: 409px;
     }
 </style>
+<div class="hero__search" style="margin-left:389px;margin-bottom:10px;">
+    <div class="hero__search__form">
+        @using (Html.BeginForm("Find", "Food", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            <input type="text" value="@ViewBag.Keyword" name="searchString" placeholder="Nhập từ khóa tìm kiếm">
+            <button type="submit" class="site-btn">SEARCH</button>
+        }
+    </div>
+</div>
 <section class="breadcrumb-section set-bg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Organi Shop</h2>
+                    <h2>Hưng Vũ Vegetable</h2>
                     <div class="breadcrumb__option">
                         <a href="@Url.Action("Index","Food")">Trang chủ</a>
                         <span></span>
                     </div>
                 </div>
-                <img src="~/Content/Images/breadcrumb.jpg" />
+                <img style="height:160px;" src="~/Content/Images/breadcrumb.jpg" />
             </div>
         </div>
     </div>
@@ -36,27 +45,10 @@
             <div class="col-lg-3 col-md-5">
                 <div class="sidebar">
                     <div class="sidebar__item">
-                        <h4>Department</h4>
+                        <h4>Danh mục sản phẩm</h4>
                         <ul>
                             <li>@Html.Action("Category", "Food")</li>
                         </ul>
-                    </div>
-                    <div class="sidebar__item">
-                        <h4>Price</h4>
-                        <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                 data-min="10" data-max="540">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" id="minamount">
-                                    <input type="text" id="maxamount">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -166,7 +166,9 @@ input[type=radio] {
 
 img {
   max-width: 100%;
-  height: auto; }
+  height: auto;
+  width:1000px;
+}
 
 figure {
   margin: 0; }

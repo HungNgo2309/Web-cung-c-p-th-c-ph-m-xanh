@@ -242,7 +242,7 @@ namespace Food.Controllers
                 }
             }
 
-            return View();
+            return this.Index();
         }
     }
 }

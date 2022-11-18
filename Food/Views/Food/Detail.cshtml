@@ -72,14 +72,22 @@
         content: '\f006';
         font-family: FontAwesome;
 </style>
-
+<div class="hero__search" style="margin-left:405px;margin-bottom:10px;">
+    <div class="hero__search__form">
+        @using (Html.BeginForm("Find", "Food", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            <input type="text" value="@ViewBag.Keyword" name="searchString" placeholder="Nhập từ khóa tìm kiếm">
+            <button type="submit" class="site-btn">SEARCH</button>
+        }
+    </div>
+</div>
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Vegetable’s Package</h2>
+                    <h2>Hưng Vũ Vegetable</h2>
                     <div class="breadcrumb__option">
                         <a href="@Url.Action("Index","Food")">Trang chủ</a>
                         <a href="@Url.Action("CategoryDetail","Food", new {id =Model.CategoryID })">@Model.Category.Name</a>
@@ -91,6 +99,7 @@
         </div>
     </div>
 </section>
+
 <!-- Breadcrumb Section End -->
 <!-- Product Details Section Begin -->
 <section class="product-details spad">
@@ -106,16 +115,16 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
-                    <h3>Vetgetable’s Package</h3>
+                    <h3>@Model.Name</h3>
                     @Html.Action("Star","Food",new {id = Model.ProductID })
                     <div class="product__details__price">@Html.FormatValue(Model.Price, "{0:#,##0}")VNĐ</div>
                     <ul>
                         <li><b>Tình trạng</b> <span>Còn hàng</span></li>
-                        <li><b>Vận chuyển</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
+                        <li><b>Vận chuyển</b> <span>trong 01 ngày</span></li>
                         <li><b>Trọng lượng</b> <span>@Model.Weight</span></li>
                         
                     </ul>
-                    <a href="@Url.Action("ThemGioHang", "ShoppingCart", new { msp = Model.ProductID, url = Request.Url.ToString() })" class="primary-btn">ADD TO CARD</a>
+                    <a href="@Url.Action("ThemGioHang", "ShoppingCart", new { msp = Model.ProductID, url = Request.Url.ToString() })" class="primary-btn">Thêm vào giỏ hàng</a>
                     
 
                 </div>
