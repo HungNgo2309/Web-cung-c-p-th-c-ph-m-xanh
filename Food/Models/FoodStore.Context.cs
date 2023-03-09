@@ -26,15 +26,17 @@ namespace Food.Models
         }
     
         public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<ADMIN> ADMINs { get; set; }
         public virtual DbSet<CartDetail> CartDetails { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<PromoDetail> PromoDetails { get; set; }
+        public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<Rate_> Rate_ { get; set; }
         public virtual DbSet<ShoppingCard> ShoppingCards { get; set; }
-        public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<ADMIN> ADMINs { get; set; }
+        public virtual DbSet<Collect> Collects { get; set; }
     }
 }

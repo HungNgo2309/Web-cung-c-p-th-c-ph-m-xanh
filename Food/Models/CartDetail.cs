@@ -12,7 +12,7 @@ namespace Food.Models
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
+    using Food.Models;
     public partial class CartDetail
     {
         FoodStoreEntities db = new FoodStoreEntities();
@@ -21,6 +21,7 @@ namespace Food.Models
         public Nullable<int> Quantity { get; set; }
         public Nullable<int> Price { get; set; }
         public int ShoppingCartID { get; set; }
+        public Nullable<bool> PayNeed { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual ShoppingCard ShoppingCard { get; set; }

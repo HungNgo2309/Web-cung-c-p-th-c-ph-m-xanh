@@ -6,7 +6,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>HungVuVegetable</title>
     <!-- Google Font -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
@@ -40,27 +40,16 @@
         <div class="humberger__menu__logo">
             <img src="~/Content/Images/logoFood.png">
         </div>
-        <div class="humberger__menu__cart">
-            <ul>
-                <li> <a class="fa fa-user" href="@Html.ActionLink("Đăng nhập", "Login", "User")"</a></li>
-            </ul>
-
-        </div>
+        
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active">@Html.ActionLink("Trang chủ", "Index", "Food")</li>
-                <li>@Html.ActionLink("Shop", "Shop", "Food")</li>
-                <li>
-                    <a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li>@Html.ActionLink("Cửa hàng", "Shop", "Food")</li>
+                @if (Session["TaiKhoan"] != null)
+                {
+                    <li>@Html.ActionLink("Đơn hàng", "ManageOrder", "HistoryOrder")</li>
+                }
+                <li><a href="./contact.html">Liên hệ</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -88,26 +77,39 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <nav class="header__menu" style="margin-left:87px;margin-top:50px;">
-                        <ul>
-                            <li class="active" style="margin-left:-13px;">@Html.ActionLink("Trang chủ", "Index", "Food")</li>
-                            <li style="margin-left:-13px;">@Html.ActionLink("Cửa hàng", "Shop", "Food")</li>
-                            @if (Session["TaiKhoan"] != null)
-                            {
-                                <li style="margin-left:-13px;">@Html.ActionLink("Đơn hàng", "ManageOrder", "HistoryOrder")</li>
-                            }
-                            <li style="margin-left:-13px;"><a href="./contact.html">Liên hệ</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul style="margin-right:-51px; ">
-                            <li>@Html.Action("LoginLogout", "Food") </li>
-                        </ul>
+                    @if (Session["TaiKhoan"] != null)
+                    {
+                        <nav class="header__menu" style="margin-left:87px;margin-top:50px;">
+                            <ul>
+                                <li class="active" style="margin-left:-13px;">@Html.ActionLink("Trang chủ", "Index", "Food")</li>
+                                <li style="margin-left:-13px;">@Html.ActionLink("Cửa hàng", "Shop", "Food")</li>
+                                @if (Session["TaiKhoan"] != null)
+                                {
+                                    <li style="margin-left:-13px;">@Html.ActionLink("Đơn hàng", "ManageOrder", "HistoryOrder")</li>
+                                }
+                                <li style="margin-left:-13px;"><a href="./contact.html">Liên hệ</a></li>
+                            </ul>
+                        </nav>
+                        
+                        }
+                        else
+                        {
+                        <nav class="header__menu" style="margin-left:180px;margin-top:50px;">
+                            <ul>
+                                <li class="active" style="margin-left:-13px;">@Html.ActionLink("Trang chủ", "Index", "Food")</li>
+                                <li style="margin-left:-13px;">@Html.ActionLink("Cửa hàng", "Shop", "Food")</li>
+                                <li style="margin-left:-13px;"><a href="./contact.html">Liên hệ</a></li>
+                            </ul>
+                        </nav>
+                        }</div >
+                            <div class="col-lg-3">
+                            <div class="header__cart">
+                                <ul style="margin-right:-51px; ">
+                                    <li>@Html.Action("LoginLogout", "Food") </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
             <div class="humberger__open">
                 <i class="fa fa-bars"></i>
             </div>

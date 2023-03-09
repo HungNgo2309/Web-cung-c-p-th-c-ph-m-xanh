@@ -161,6 +161,9 @@
     <Compile Include="Models\Category.cs">
       <DependentUpon>FoodStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Collect.cs">
+      <DependentUpon>FoodStore.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FoodStore.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -183,6 +186,9 @@
       <DependentUpon>FoodStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
+      <DependentUpon>FoodStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PromoDetail.cs">
       <DependentUpon>FoodStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Promotion.cs">
@@ -1143,8 +1149,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\FoodStore.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FoodStore.Context.cs</LastGenOutput>
       <DependentUpon>FoodStore.edmx</DependentUpon>
+      <LastGenOutput>FoodStore.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\FoodStore.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1153,13 +1159,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\FoodStore.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FoodStore.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\FoodStore.edmx.diagram">
-      <DependentUpon>FoodStore.edmx</DependentUpon>
-    </Content>
     <Content Include="fonts\material-icon\fonts\Material-Design-Iconic-Font.eot" />
     <Content Include="fonts\material-icon\fonts\Material-Design-Iconic-Font.ttf" />
     <Content Include="fonts\material-icon\fonts\Material-Design-Iconic-Font.woff" />
@@ -1533,6 +1532,16 @@
     <Content Include="Areas\Admin\Views\Order1\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Order1\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Order1\Index.cshtml" />
+    <EntityDeploy Include="Models\FoodStore.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FoodStore.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FoodStore.edmx.diagram">
+      <DependentUpon>FoodStore.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1557,10 +1566,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_FoodLayoutPage1.cshtml" />
     <Content Include="Views\Food\Index.cshtml" />
     <Content Include="Views\Food\Shop.cshtml" />
@@ -1587,6 +1592,11 @@
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\User\Reset.cshtml" />
     <Content Include="Views\User\resetpass.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Food\Promotion.cshtml" />
+    <Content Include="Views\Food\Voucher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,6 +20,7 @@ namespace Food.Models
             this.Orders = new HashSet<Order>();
             this.Rate_ = new HashSet<Rate_>();
             this.ShoppingCards = new HashSet<ShoppingCard>();
+            this.Collects = new HashSet<Collect>();
         }
     
         public int AccountID { get; set; }
@@ -37,5 +38,7 @@ namespace Food.Models
         public virtual ICollection<Rate_> Rate_ { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShoppingCard> ShoppingCards { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Collect> Collects { get; set; }
     }
 }

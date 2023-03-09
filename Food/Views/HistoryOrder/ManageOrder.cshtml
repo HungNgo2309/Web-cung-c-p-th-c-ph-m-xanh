@@ -52,7 +52,7 @@
                                Product pd = db.Products.SingleOrDefault(n => n.ProductID == item.ProductID);
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="~/Content/Images/@pd.Image" alt="">
+                                        <img style="max-width:200px;"  src="~/Content/Images/@pd.Image" alt="">
                                         <h5>@pd.Name</h5>
                                     </td>
                                     <td class="shoping__cart__price">

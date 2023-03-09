@@ -14,9 +14,8 @@ namespace Food.Controllers
         public ActionResult ManageOrder()
         {
             Account ac = (Account)Session["TaiKhoan"];
-            Order ctac = db.Orders.FirstOrDefault(n => n.AccountID == ac.AccountID);
             var mn = from s in db.OrderDetails
-                     where s.OrderID == ctac.OrderID
+                     where s.Order.AccountID== ac.AccountID
                      select s;
             return View(mn);
         }

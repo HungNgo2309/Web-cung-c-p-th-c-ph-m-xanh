@@ -85,6 +85,21 @@ namespace Food.Controllers
             }
             return dTongTien;
         }
+        private double NeedPay()
+        {
+            double dTongTien = 0;
+            int mspc = Convert.ToInt32(Session["CartID"]);
+            List<CartDetail> lstGioHang = (from s in db.CartDetails
+                                           where s.ShoppingCartID == mspc && s.PayNeed == true
+                                               select s).ToList();
+
+                if (lstGioHang != null)
+                {
+                    dTongTien = Convert.ToInt32(lstGioHang.Sum(n => n.Quantity * n.Price));
+                }
+            
+            return dTongTien;
+        }
         private int TongSoLuong()
         {
             int iTongSoLuong = 0;
@@ -192,30 +207,27 @@ namespace Food.Controllers
             }
         }
         [HttpGet]
-        public ActionResult Payment(int id, int Totalprice)
+        public ActionResult Payment()
         {
             if(Session["TaiKhoan"]==null)
             {
                 return Redirect("~/User/Login?id=2");
             }
-            if (id != 0)
-            {
-                int mspc = Convert.ToInt32(Session["CartID"]);
-                IList<CartDetail> pay = (from s in db.CartDetails
-                                        where s.ShoppingCartID == mspc && s.ProductID ==id
-                                        select s).ToList(); 
-                ViewBag.TongTien = Totalprice;
-                Session["pay"] = pay;
-                return View(pay);
-            }
+            
             else
             {
                 int mspc = Convert.ToInt32(Session["CartID"]);
-                IList<CartDetail> pay = (from s in db.CartDetails
-                                        where s.ShoppingCartID == mspc 
-                                        select s).ToList();
-                Session["pay"] = pay;
-                ViewBag.TongTien = TongTien();
+                var pay = from s in db.CartDetails
+                                        where s.ShoppingCartID == mspc && s.PayNeed==true 
+                                        select s;
+                Session["pay"] = (from s in db.CartDetails
+                                  where s.ShoppingCartID == mspc && s.PayNeed == true
+                                  select s).ToList();
+                ViewBag.TongTien = NeedPay();
+                if(pay==null)
+                {
+                    return this.GioHang();
+                }
                 return View(pay);
             }
         }
@@ -320,16 +332,50 @@ namespace Food.Controllers
             }
             if (em.Count > 1)
             {
-                int id = 0;
-                int Totalprice = 0;
-                return this.Payment(id, Totalprice);
+                return this.Payment();
             }
             else
             {
                 CartDetail cnew = em.Single();
-                return this.Payment(cnew.ProductID,Convert.ToInt32(cnew.Price));
+                return this.Payment();
             }
         }
-
+        public JsonResult PayNeed(int id)
+        {
+            try
+            {
+                int mspc = Convert.ToInt32(Session["CartID"]);
+                CartDetail cd = db.CartDetails.SingleOrDefault(m => m.ShoppingCartID == mspc && m.ProductID == id);
+                if (cd.PayNeed == true)
+                {
+                    cd.PayNeed = false;
+                }
+                else
+                {
+                    cd.PayNeed = true;
+                }
+                db.SaveChanges();
+                return Json(new { code = 200 }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { code = 500}, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult PayNeedNo(int id)
+        {
+            try
+            {
+                int mspc = Convert.ToInt32(Session["CartID"]);
+                CartDetail cd = db.CartDetails.SingleOrDefault(m => m.ShoppingCartID == mspc && m.ProductID == id);
+                cd.PayNeed = false;
+                db.SaveChanges();
+                return Json(new { code = 200 }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { code = 500 }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }

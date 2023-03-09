@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f3cdafd8590244d9bca6f6fb4643d595" Name="Diagram1">
+        <EntityTypeShape EntityType="FoodStoreModel.Account" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodStoreModel.CartDetail" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodStoreModel.Category" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodStoreModel.Order" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodStoreModel.OrderDetail" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodStoreModel.Product" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodStoreModel.Rate_" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodStoreModel.ShoppingCard" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="FoodStoreModel.FK_Order_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodStoreModel.FK_Rate__Account" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodStoreModel.FK_ShoppingCard_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodStoreModel.FK_CartDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodStoreModel.FK_CartDetail_ShoppingCard" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodStoreModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodStoreModel.FK_OrderDetail_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodStoreModel.FK_OrderDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodStoreModel.FK_Rate__Product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FoodStoreModel.Promotion" Width="1.5" PointX="5.25" PointY="11.125" />
+        <EntityTypeShape EntityType="FoodStoreModel.sysdiagram" Width="1.5" PointX="7.375" PointY="0.75" />
+        <AssociationConnector Association="FoodStoreModel.PromotionDetail" />
+        <EntityTypeShape EntityType="FoodStoreModel.ADMIN" Width="1.5" PointX="8.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

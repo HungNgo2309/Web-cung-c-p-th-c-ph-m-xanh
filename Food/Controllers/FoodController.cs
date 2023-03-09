@@ -78,6 +78,14 @@ namespace Food.Controllers
                      select s;
             return PartialView(rv);
         }
+        [HttpGet]
+        public ActionResult Promotion(int id)
+        {
+            var rv = from s in db.PromoDetails
+                     where s.ProductID == id
+                     select s;
+            return PartialView(rv);
+        }
         public ActionResult Star(int id)
         {
             List<Rate_> rv = (from s in db.Rate_
@@ -111,7 +119,7 @@ namespace Food.Controllers
             if (!String.IsNullOrEmpty(searchString)) // kiểm tra chuỗi tìm kiếm có rỗng/null hay không
             {
                 searchString = searchString.ToLower();
-                links = links.Where(s => s.Name.ToLower().Contains(searchString)); //lọc theo chuỗi tìm kiếm
+                links = links.Where(s => s.Decription.ToLower().Contains(searchString)); //lọc theo chuỗi tìm kiếm
             }
             return View(links.ToList());
         }
@@ -243,6 +251,39 @@ namespace Food.Controllers
             }
 
             return this.Index();
+        }
+        public JsonResult Collect(int id)
+        {
+            try
+            {
+                Account ac = (Account)Session["TaiKhoan"];
+                Collect cl = db.Collects.SingleOrDefault(m=>m.PromotionID==id && m.AccountID==ac.AccountID);
+                 if (cl==null)
+                {
+                    Collect npr = new Collect();
+                    npr.AccountID = ac.AccountID;
+                    npr.PromotionID = id;
+                    db.Collects.Add(npr);
+                    db.SaveChanges();
+                    return Json(new { code = 200, msg = "Thêm thành công" }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { code = 200, msg = "Bạn đã sưu tầm mã giảm giá này rồi" }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { code = 500, msg = "Thêm thất bại" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public ActionResult Voucher()
+        {
+            Account ac = (Account)Session["TaiKhoan"];
+            var cl = from s in db.Collects
+                     where s.AccountID == ac.AccountID
+                     select s;
+            return View(cl);
         }
     }
 }

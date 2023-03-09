@@ -116,20 +116,20 @@
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
                     <h3>@Model.Name</h3>
-                    @Html.Action("Star","Food",new {id = Model.ProductID })
+                    @Html.Action("Star", "Food", new { id = Model.ProductID })
                     <div class="product__details__price">@Html.FormatValue(Model.Price, "{0:#,##0}")VNĐ</div>
                     <ul>
                         <li><b>Tình trạng</b> <span>Còn hàng</span></li>
                         <li><b>Vận chuyển</b> <span>trong 01 ngày</span></li>
                         <li><b>Trọng lượng</b> <span>@Model.Weight</span></li>
-                        
+
                     </ul>
                     <a href="@Url.Action("ThemGioHang", "ShoppingCart", new { msp = Model.ProductID, url = Request.Url.ToString() })" class="primary-btn">Thêm vào giỏ hàng</a>
-                    
+                
+                </div>@Html.Action("Promotion", "Food", new { id = Model.ProductID })
 
-                </div>
             </div>
-            <div class="col-lg-12">
+            <div class="col-lg-12" >
                 <div class="product__details__tab">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">

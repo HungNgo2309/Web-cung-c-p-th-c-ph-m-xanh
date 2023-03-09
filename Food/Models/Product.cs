@@ -19,8 +19,8 @@ namespace Food.Models
         {
             this.CartDetails = new HashSet<CartDetail>();
             this.OrderDetails = new HashSet<OrderDetail>();
+            this.PromoDetails = new HashSet<PromoDetail>();
             this.Rate_ = new HashSet<Rate_>();
-            this.Promotions = new HashSet<Promotion>();
         }
     
         public int ProductID { get; set; }
@@ -37,8 +37,8 @@ namespace Food.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rate_> Rate_ { get; set; }
+        public virtual ICollection<PromoDetail> PromoDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Promotion> Promotions { get; set; }
+        public virtual ICollection<Rate_> Rate_ { get; set; }
     }
 }
