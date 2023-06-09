@@ -17,8 +17,8 @@ namespace Food.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Promotion()
         {
-            this.PromoDetails = new HashSet<PromoDetail>();
             this.Collects = new HashSet<Collect>();
+            this.PromoDetails = new HashSet<PromoDetail>();
         }
     
         public int PromotionID { get; set; }
@@ -28,8 +28,8 @@ namespace Food.Models
         public System.DateTime DateEnd { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PromoDetail> PromoDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Collect> Collects { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PromoDetail> PromoDetails { get; set; }
     }
 }

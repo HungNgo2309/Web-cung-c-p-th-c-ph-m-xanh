@@ -14,9 +14,9 @@ namespace Food.Models
     
     public partial class Collect
     {
-        public int CollectID { get; set; }
-        public int PromotionID { get; set; }
+        public int ID_collect { get; set; }
         public int AccountID { get; set; }
+        public int PromotionID { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual Promotion Promotion { get; set; }

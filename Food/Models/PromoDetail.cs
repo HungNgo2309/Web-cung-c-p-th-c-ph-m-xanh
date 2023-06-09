@@ -14,9 +14,9 @@ namespace Food.Models
     
     public partial class PromoDetail
     {
-        public int ProDetailID { get; set; }
         public int PromotionID { get; set; }
         public int ProductID { get; set; }
+        public int ID_PRD { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Promotion Promotion { get; set; }
